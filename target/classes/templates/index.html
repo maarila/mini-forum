@@ -1,0 +1,36 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Etusivu</title>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        <table width="400">
+            <tr>
+                <th align="left">Viestiketju</th>
+                <th align="left">Viestejä</th>
+            </tr>
+            <tr th:each="instance : ${ketjutJaKoot}">
+                <td><a th:href="@{~/messages/{id}(id=${instance.key.id})}">
+                        <span th:text="${instance.key.title}">Ketjun nimi</span>
+                    </a>
+                </td>
+                <td th:text="${instance.value}"></td>
+            </tr>
+        </table>
+
+        <br />
+        <p>Lisää viestiketju:</p>
+
+        <form method="POST" action="">
+            <input type="text" name="ketju"/>
+            <p>Aloitusviesti:</p>
+            <input type="text" name="aloitusviesti"/>
+            <br />
+            <input type="submit" value="Lisää"/>
+        </form>
+
+    </body>
+</html>
